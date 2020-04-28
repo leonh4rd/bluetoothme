@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">BluetoothMeOnJava</string>
+    <string name="txt_default_value">default value</string>
+    <string name="btn_paired_devices">Paired Devices</string>
+    <string name="btn_discovered_devices">Discovered Devices</string>
+    <string name="string_placeholder">Placeholder</string>
+    <string name="btn_send">Send</string>
+</resources>
