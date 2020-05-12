@@ -1,8 +1,31 @@
 <resources>
-    <string name="app_name">BluetoothMeOnJava</string>
+    <string name="controller_activity_actionbar_name">Controle</string>
+    <string name="configure_button_activity_actionbar_name">Configuração do botão</string>
+    <string name="app_name">Controle</string>
     <string name="txt_default_value">default value</string>
-    <string name="btn_paired_devices">Paired Devices</string>
+    <string name="btn_paired_devices">Dispositivos pareados</string>
     <string name="btn_discovered_devices">Discovered Devices</string>
     <string name="string_placeholder">Placeholder</string>
-    <string name="btn_send">Send</string>
+    <string name="btn_send">OK</string>
+    <string name="txt_label">Label</string>
+    <string name="txt_command">Command</string>
+    <string name="menu_settings">Settings</string>
+    <string name="button_label_forward">\u2191</string>
+    <string name="button_label_rear">\u2193</string>
+    <string name="button_label_right">\u2192</string>
+    <string name="button_label_left">\u2190</string>
+    <string name="button_label_rotate_right">\u21BB</string>
+    <string name="button_label_rotate_left">\u21BA</string>
+    <string name="button_label_stop">Parar</string>
+    <string name="button_label_increase_speed">Aumentar velocidade</string>
+    <string name="button_label_decrease_speed">Diminuir velocidade</string>
+    <string name="button_label_hyperdrive">Hyperdrive</string>
+    <string name="button_label_restore_value">Valores mínimos</string>
+    <string name="button_label_raise">Elevar</string>
+    <string name="button_label_low">Abaixar</string>
+    <string name="button_label_rotate_clockwise_cannon">\u21BB</string>
+    <string name="button_label_rotate_counter_clockwise_cannon">\u21BA</string>
+    <string name="button_label_fire_cannon">Atirar</string>
+    <string name="configure_button_activity_label_hint">button name</string>
+    <string name="configure_button_activity_command_hint">command value</string>
 </resources>

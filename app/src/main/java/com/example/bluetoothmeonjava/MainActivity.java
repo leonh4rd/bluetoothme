@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         statusMessage = (TextView)findViewById(R.id.txtStatusMessage);
         textSpace = (TextView)findViewById(R.id.txtSpace);
+        textSpace.setMovementMethod(new ScrollingMovementMethod());
 
         BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
         if(adapter == null){
@@ -61,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
                 String devName = data.getStringExtra("btDeviceName");
                 String devAddress = data.getStringExtra("btDeviceAddress");
                 appendOnView(statusMessage, "You selected\n\t" + devName + "\n\t" + devAddress);
-                connection = new ConnectionThread(devAddress);
-                connection.start();
+                //connection = new ConnectionThread(devAddress);
+                //connection.start();
             }else{
                 appendOnView(statusMessage,"No device was selected.");
             }
