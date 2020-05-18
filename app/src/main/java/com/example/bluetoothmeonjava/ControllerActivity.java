@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.bluetooth.BluetoothAdapter;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -19,6 +21,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bluetoothmeonjava.model.Command;
+import com.example.bluetoothmeonjava.model.ISavable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ControllerActivity extends AppCompatActivity {
 
@@ -84,6 +90,8 @@ public class ControllerActivity extends AppCompatActivity {
     ConnectionThread connection;
     Handler handler;
 
+    List<ISavable> commands;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,6 +104,8 @@ public class ControllerActivity extends AppCompatActivity {
         if(actionbar != null){
             actionbar.setTitle(R.string.controller_activity_actionbar_name);
         }
+
+        commands = new ArrayList<>();
 
         BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
         if(adapter == null){
@@ -139,24 +149,41 @@ public class ControllerActivity extends AppCompatActivity {
             }
         };
 
-        forward = new Command(getString(R.string.button_label_forward), "1");
-        rear = new Command(getString(R.string.button_label_rear), "2");
-        left = new Command(getString(R.string.button_label_left), "3");
-        right = new Command(getString(R.string.button_label_right), "4");
-        stop = new Command(getString(R.string.button_label_stop), "5");
-        increase_speed = new Command(getString(R.string.button_label_increase_speed), "6");
-        decrease_speed = new Command(getString(R.string.button_label_decrease_speed), "7");
-        rotate_left = new Command(getString(R.string.button_label_rotate_left), "8");
-        rotate_right = new Command(getString(R.string.button_label_rotate_right), "9");
-        hyperdrive = new Command(getString(R.string.button_label_hyperdrive), "10");
-        restore_minimum_values = new Command(getString(R.string.button_label_restore_value), "11");
-        fire_cannon = new Command(getString(R.string.button_label_fire_cannon), "30");
-        rotate_cw_cannon = new Command(getString(R.string.button_label_rotate_clockwise_cannon), "33");
-        rotate_ccw_cannon = new Command(getString(R.string.button_label_rotate_clockwise_cannon), "34");
-        up_cannon = new Command(getString(R.string.button_label_raise),"31");
-        down_cannon = new Command(getString(R.string.button_label_low), "32");
+        forward = new Command(getString(R.string.button_label_forward), "1", getString(R.string.preferences_forward_label));
+        rear = new Command(getString(R.string.button_label_rear), "2", getString(R.string.preferences_rear_label));
+        left = new Command(getString(R.string.button_label_left), "3", getString(R.string.preferences_left_label));
+        right = new Command(getString(R.string.button_label_right), "4", getString(R.string.preferences_right_label));
+        stop = new Command(getString(R.string.button_label_stop), "5", getString(R.string.preferences_stop_label));
+        increase_speed = new Command(getString(R.string.button_label_increase_speed), "6", getString(R.string.preferences_increase_speed_label));
+        decrease_speed = new Command(getString(R.string.button_label_decrease_speed), "7", getString(R.string.preferences_decrease_speed_label));
+        rotate_left = new Command(getString(R.string.button_label_rotate_left), "8", getString(R.string.preferences_rotate_left_label));
+        rotate_right = new Command(getString(R.string.button_label_rotate_right), "9", getString(R.string.preferences_rotate_right_label));
+        hyperdrive = new Command(getString(R.string.button_label_hyperdrive), "10", getString(R.string.preferences_hyperdrive_label));
+        restore_minimum_values = new Command(getString(R.string.button_label_restore_value), "11", getString(R.string.preferences_restore_minimum_values_label));
+        fire_cannon = new Command(getString(R.string.button_label_fire_cannon), "30", getString(R.string.preferences_fire_cannon_label));
+        rotate_cw_cannon = new Command(getString(R.string.button_label_rotate_clockwise_cannon), "33", getString(R.string.preferences_rotate_right_cannon_label));
+        rotate_ccw_cannon = new Command(getString(R.string.button_label_rotate_clockwise_cannon), "34", getString(R.string.preferences_rotate_left_cannon_label));
+        up_cannon = new Command(getString(R.string.button_label_raise),"31", getString(R.string.preferences_rise_cannon_label));
+        down_cannon = new Command(getString(R.string.button_label_low), "32", getString(R.string.preferences_low_cannon_label));
+        help = new Command("Help", "100", getString(R.string.preferences_help_label));
 
-        help = new Command("Help", "100");
+        commands.add(forward);
+        commands.add(rear);
+        commands.add(left);
+        commands.add(right);
+        commands.add(stop);
+        commands.add(increase_speed);
+        commands.add(decrease_speed);
+        commands.add(rotate_left);
+        commands.add(rotate_right);
+        commands.add(hyperdrive);
+        commands.add(restore_minimum_values);
+        commands.add(fire_cannon);
+        commands.add(rotate_cw_cannon);
+        commands.add(rotate_ccw_cannon);
+        commands.add(up_cannon);
+        commands.add(down_cannon);
+        commands.add(help);
 
         btn_forward = findViewById(R.id.btn1);
         btn_rear = findViewById(R.id.btn4);
@@ -175,6 +202,11 @@ public class ControllerActivity extends AppCompatActivity {
         btn_up_cannon = findViewById(R.id.btn12);
         btn_down_cannon = findViewById(R.id.btn14);
         btn_restore_minimum_values = findViewById(R.id.btn11);
+
+        for(ISavable command : commands)
+        {
+            command.LoadConfig(this, getString(R.string.preferences_file_key));
+        }
 
         btn_forward.setOnLongClickListener(new View.OnLongClickListener(){
             @Override
@@ -364,6 +396,21 @@ public class ControllerActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onStop(){
+        super.onStop();
+        for(ISavable command : commands)
+        {
+            command.SaveConfig(this, getString(R.string.preferences_file_key));
+        }
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+
+    }
+
+    @Override
     public void onBackPressed(){
         super.onBackPressed();
         finish();
@@ -501,9 +548,15 @@ public class ControllerActivity extends AppCompatActivity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         super.onActivityResult(requestCode, resultCode, data);
-        String value = data.getStringExtra("Button Label");
-        String value2 = data.getStringExtra("Button Command");
+
+        String value = "";
+        String value2 = "";
+        if(data != null){
+            value = data.getStringExtra("Button Label");
+            value2 = data.getStringExtra("Button Command");
+        }
 
         if (requestCode == ENABLE_BLUETOOTH) {
             if(resultCode == RESULT_OK){
@@ -568,6 +621,12 @@ public class ControllerActivity extends AppCompatActivity {
         }else if(requestCode == ACTIVITY_RESULT_HELP){
             if(resultCode == RESULT_OK){
                 //help.setText(value + value2);
+            }
+        }else if(requestCode == ACTIVITY_RESULT_STOP){
+            if(resultCode == RESULT_OK){
+                stop.setLabel(value);
+                stop.setCommand(value2);
+                btn_stop.setText(stop.getLabel());
             }
         }else if(requestCode == ACTIVITY_RESULT_HYPERDRIVE){
             if(resultCode == RESULT_OK){

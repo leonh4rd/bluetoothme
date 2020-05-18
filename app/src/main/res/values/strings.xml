@@ -1,7 +1,8 @@
 <resources>
     <string name="controller_activity_actionbar_name">Controle</string>
+    <string name="preferences_file_key">com.example.bluetoothmeonjava.PREFERENCE_FILE_KEY</string>
     <string name="configure_button_activity_actionbar_name">Configuração do botão</string>
-    <string name="app_name">Controle</string>
+    <string name="app_name">Controle WarTank</string>
     <string name="txt_default_value">default value</string>
     <string name="btn_paired_devices">Dispositivos pareados</string>
     <string name="btn_discovered_devices">Discovered Devices</string>
@@ -28,4 +29,23 @@
     <string name="button_label_fire_cannon">Atirar</string>
     <string name="configure_button_activity_label_hint">button name</string>
     <string name="configure_button_activity_command_hint">command value</string>
+
+    <!-- PREFERENCES CONSTANTS -->
+    <string name="preferences_forward_label">forward</string>
+    <string name="preferences_rear_label">rear</string>
+    <string name="preferences_right_label">right</string>
+    <string name="preferences_left_label">left</string>
+    <string name="preferences_rotate_right_label">rotate_right</string>
+    <string name="preferences_rotate_left_label">rotate_left</string>
+    <string name="preferences_stop_label">stop</string>
+    <string name="preferences_hyperdrive_label">hyperdrive</string>
+    <string name="preferences_restore_minimum_values_label">restore_minimum_values</string>
+    <string name="preferences_increase_speed_label">increase_speed</string>
+    <string name="preferences_decrease_speed_label">decrease_speed</string>
+    <string name="preferences_fire_cannon_label">fire_cannon</string>
+    <string name="preferences_rotate_left_cannon_label">rotate_left_cannon</string>
+    <string name="preferences_rotate_right_cannon_label">rotate_right_cannon</string>
+    <string name="preferences_rise_cannon_label">rise_cannon</string>
+    <string name="preferences_low_cannon_label">low_cannon</string>
+    <string name="preferences_help_label">help</string>
 </resources>
