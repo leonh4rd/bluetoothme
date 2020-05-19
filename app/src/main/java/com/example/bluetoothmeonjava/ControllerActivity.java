@@ -402,6 +402,10 @@ public class ControllerActivity extends AppCompatActivity {
         {
             command.SaveConfig(this, getString(R.string.preferences_file_key));
         }
+        if(connection != null && connection.isConnected)
+        {
+            connection.cancel();
+        }
     }
 
     @Override

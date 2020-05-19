@@ -18,8 +18,8 @@
     <string name="button_label_rotate_right">\u21BB</string>
     <string name="button_label_rotate_left">\u21BA</string>
     <string name="button_label_stop">Parar</string>
-    <string name="button_label_increase_speed">Aumentar velocidade</string>
-    <string name="button_label_decrease_speed">Diminuir velocidade</string>
+    <string name="button_label_increase_speed">Aumentar\nvelocidade</string>
+    <string name="button_label_decrease_speed">Diminuir\nvelocidade</string>
     <string name="button_label_hyperdrive">Hyperdrive</string>
     <string name="button_label_restore_value">Valores mínimos</string>
     <string name="button_label_raise">Elevar</string>
