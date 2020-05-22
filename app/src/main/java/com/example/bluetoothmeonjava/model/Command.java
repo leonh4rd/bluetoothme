@@ -2,9 +2,6 @@ package com.example.bluetoothmeonjava.model;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.widget.Button;
-
-import com.example.bluetoothmeonjava.R;
 
 public class Command implements ISavable {
 

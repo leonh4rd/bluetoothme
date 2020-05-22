@@ -64,7 +64,6 @@ public class ControllerActivity extends AppCompatActivity {
     private Command rotate_ccw_cannon;
     private Command up_cannon;
     private Command down_cannon;
-    private Command help;
 
     private Button btn_forward;
     private Button btn_rear;
@@ -75,7 +74,6 @@ public class ControllerActivity extends AppCompatActivity {
     private Button btn_rotate_left;
     private Button btn_increase_speed;
     private Button btn_decrease_speed;
-    private Button btn_help;
     private Toolbar toolbar;
     private Button btn_hyperdrive;
     private Button btn_restore_minimum_values;
@@ -165,7 +163,6 @@ public class ControllerActivity extends AppCompatActivity {
         rotate_ccw_cannon = new Command(getString(R.string.button_label_rotate_clockwise_cannon), "34", getString(R.string.preferences_rotate_left_cannon_label));
         up_cannon = new Command(getString(R.string.button_label_raise),"31", getString(R.string.preferences_rise_cannon_label));
         down_cannon = new Command(getString(R.string.button_label_low), "32", getString(R.string.preferences_low_cannon_label));
-        help = new Command("Help", "100", getString(R.string.preferences_help_label));
 
         commands.add(forward);
         commands.add(rear);
@@ -183,7 +180,6 @@ public class ControllerActivity extends AppCompatActivity {
         commands.add(rotate_ccw_cannon);
         commands.add(up_cannon);
         commands.add(down_cannon);
-        commands.add(help);
 
         btn_forward = findViewById(R.id.btn1);
         btn_rear = findViewById(R.id.btn4);
@@ -194,7 +190,6 @@ public class ControllerActivity extends AppCompatActivity {
         btn_rotate_right = findViewById(R.id.btn8);
         btn_increase_speed = findViewById(R.id.btn6);
         btn_decrease_speed = findViewById(R.id.btn7);
-        btn_help = findViewById(R.id.btn_help);
         btn_hyperdrive = findViewById(R.id.btn10);
         btn_fire_cannon = findViewById(R.id.btn13);
         btn_rotate_cw_cannon = findViewById(R.id.btn16);
@@ -384,15 +379,6 @@ public class ControllerActivity extends AppCompatActivity {
             }
         });
 
-        btn_help.setOnLongClickListener(new View.OnLongClickListener(){
-            @Override
-            public boolean onLongClick(View v) {
-                Intent intent = new Intent(v.getContext(), ConfigureButtonActivity.class);
-                startActivityForResult(intent, ACTIVITY_RESULT_HELP);
-                return true;
-            }
-        });
-
     }
 
     @Override
@@ -541,12 +527,6 @@ public class ControllerActivity extends AppCompatActivity {
     public void onBtnDownCannonClick(View view){
         if(connection != null){
             connection.write(down_cannon.getCommand().getBytes());
-        }
-    }
-
-    public void onBtnHelpClick(View view){
-        if(connection != null){
-            connection.write(help.getCommand().getBytes());
         }
     }
 
