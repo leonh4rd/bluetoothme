@@ -125,15 +125,17 @@
         android:id="@+id/btn6"
         android:layout_width="52dp"
         android:layout_height="52dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/buttton_selector"
         android:onClick="onBtnIncreaseSpeedClick"
         android:text="@string/button_label_increase_speed"
-        android:textSize="6sp"
+        android:textSize="7sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.029"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btn2" />
+        app:layout_constraintTop_toTopOf="@+id/btn2"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btn9"
@@ -159,11 +161,13 @@
         android:background="@drawable/buttton_selector"
         android:onClick="onBtnRestoreMinimumValuesClick"
         android:text="@string/button_label_restore_value"
-        android:textSize="6sp"
+        android:textSize="7sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.029"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn6" />
+        app:layout_constraintTop_toBottomOf="@+id/btn6"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btn2"
@@ -223,11 +227,13 @@
         android:background="@drawable/buttton_selector"
         android:onClick="onBtnDecreaseSpeedClick"
         android:text="@string/button_label_decrease_speed"
-        android:textSize="6sp"
+        android:textSize="7sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.029"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn11" />
+        app:layout_constraintTop_toBottomOf="@+id/btn11"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btn10"
